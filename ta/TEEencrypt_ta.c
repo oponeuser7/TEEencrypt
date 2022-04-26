@@ -114,9 +114,10 @@ static TEE_Result enc_value(uint32_t param_types,
 	char* input = (char*)params[0].memref.buffer;
 	int len = strlen(input);
 	/*Use TEE API to generate key with 1~26 random value*/
-	TEE_GenerateRandom(&key, 1);
-	key %= 26;
-	key += 1;
+	while(key>0) {
+		TEE_GenerateRandom(&key, 1);
+		key %= 26;
+	}
 	/*Fetch input from shared memory*/
 	memcpy(encrypted, input, len);
 	
