@@ -35,7 +35,7 @@
 #include <stdio.h>
 #include <TEEencrypt_ta.h>
 
-int key = 0;
+int key = 1;
 int rootkey = 7;
 
 struct rsa_session {
